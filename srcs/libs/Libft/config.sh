@@ -1,0 +1,2 @@
+LIBFT_DIR=./
+export LIBFT_DIR

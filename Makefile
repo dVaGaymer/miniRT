@@ -32,7 +32,7 @@ NAME		=	miniRT
 CC			=	gcc
 
 #Following code works in MACOS
-MLX_DIR		=	${MINIRT_DIR}srcs/minilibx_opengl_20191021
+MLX_DIR		=	${MINIRT_DIR}srcs/libs/minilibx_opengl_20191021
 FLAGS		=	-L${MLX_DIR} -lmlx -framework OpenGL -framework AppKit
 
 %.o : %.c
