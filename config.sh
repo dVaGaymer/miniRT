@@ -1,3 +1,6 @@
+git submodule init
+git submodule update
+
 MINIRT_DIR=./
 export MINIRT_DIR
 
