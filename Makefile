@@ -62,6 +62,7 @@ fclean:			clean
 				rm -f ${LIBFT_A}
 				rm -f ${FTPF_A}
 				rm -f ${GNL_A}
+				rm -f *.a
 				rm -f miniRT
 				
 re:				fclean all
