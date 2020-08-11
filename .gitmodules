@@ -1,0 +1,15 @@
+[submodule "srcs/libs/Libft"]
+	path = srcs/libs/Libft
+	url = https://github.com/dVaGaymer/Libft.git
+[submodule "srcs/libs/GNL"]
+	path = srcs/libs/GNL
+	url = https://github.com/dVaGaymer/GNL.git
+[submodule "srcs/libs/FTPF"]
+	path = srcs/libs/FTPF
+	url = https://github.com/dVaGaymer/FTPF.git
+[submodule "srcs/libs/minilibx_opengl_20191021"]
+	path = srcs/libs/minilibx_opengl_20191021
+	url = https://github.com/dVaGaymer/minilibx_opengl_20191021.git
+[submodule "srcs/libs/minilibx-linux"]
+	path = srcs/libs/minilibx-linux
+	url = https://github.com/dVaGaymer/minilibx-linux.git
