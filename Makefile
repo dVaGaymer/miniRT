@@ -14,7 +14,8 @@ LIBFT_INC	=	${LIBFT_DIR}includes/
 FTPF_INC	=	${FTPF_DIR}includes/
 GNL_INC		=	${GNL_DIR}includes/
 
-SRCS		=	${MINIRT_DIR}srcs/main.c
+SRCS_DIR	=	${MINIRT_DIR}
+SRCS		=	${SRCS_DIR}srcs/main.c
 OBJS		= 	$(patsubst %.c, %.o, ${SRCS})
 
 LIBFT_LIB	=	ft

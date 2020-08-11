@@ -1,11 +1,14 @@
 MINIRT_DIR=./
 export MINIRT_DIR
 
-LIBFT_DIR=srcs/Libft/
+#Add absolute path here
+LIBFT_DIR=/Users/dvagaymer/Documents/miniRT/srcs/Libft/
 export LIBFT_DIR
 
-FTPF_DIR=srcs/FTPF/
+#Add absolute path here
+FTPF_DIR=/Users/dvagaymer/Documents/miniRT/srcs/FTPF/
 export FTPF_DIR
 
-GNL_DIR=srcs/GNL/
+#Add absolute path here
+GNL_DIR=/Users/dvagaymer/Documents/miniRT/srcs/GNL/
 export GNL_DIR

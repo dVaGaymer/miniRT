@@ -11,3 +11,6 @@
 [submodule "srcs/Libft"]
 	path = srcs/Libft
 	url = https://github.com/dVaGaymer/Libft.git
+[submodule "srcs/minilibx_opengl_20191021"]
+	path = srcs/minilibx_opengl_20191021
+	url = https://github.com/dVaGaymer/minilibx_opengl_20191021.git
