@@ -10,24 +10,21 @@
 #                                                                              #
 # **************************************************************************** #
 
-MINIRT_DIR	=	srcs/
-LIBFT_DIR	=	srcs/Libft/
-FTPF_DIR	=	srcs/FTPF/
-GNL_DIR		=	srcs/GNL/
-
 LIBFT_INC	=	${LIBFT_DIR}includes/
 FTPF_INC	=	${FTPF_DIR}includes/
 GNL_INC		=	${GNL_DIR}includes/
 
-SRCS		=	${MINIRT_DIR}main.c
+SRCS		=	${MINIRT_DIR}srcs/main.c
 OBJS		= 	$(patsubst %.c, %.o, ${SRCS})
 
-LIBFT_A		=	${LIBFT_DIR}libft.a
 LIBFT_LIB	=	ft
-GNL_A		=	${GNL_DIR}libgnl.a
+LIBFT_A		=	${LIBFT_DIR}lib${LIBFT_LIB}.a
+
 GNL_LIB		=	gnl
-FTPF_A		=	${FTPF_DIR}libftprintf.a
+GNL_A		=	${GNL_DIR}lib${GNL_LIB}.a
+
 FTPF_LIB	=	ftprintf
+FTPF_A		=	${FTPF_DIR}lib${FTPF_LIB}.a
 
 NAME		=	miniRT
 
