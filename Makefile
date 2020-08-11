@@ -30,10 +30,13 @@ FTPF_A		=	${FTPF_DIR}lib${FTPF_LIB}.a
 NAME		=	miniRT
 
 CC			=	gcc
-FLAGS		=	-L srcs/minilibx-linux -l mlx -l m -l bsd -l X11 -l Xext
+
+#Following code works in MACOS
+MLX_DIR		=	${MINIRT_DIR}srcs/minilibx_opengl_20191021
+FLAGS		=	-L${MLX_DIR} -lmlx -framework OpenGL -framework AppKit
 
 %.o : %.c
-				clang -Wall -Werror -Wextra -I ${FTPF_INC} -I ${LIBFT_INC} -I ${GNL_INC} -c $< -o $@
+				clang -Wall -Werror -Wextra -I ${FTPF_INC} -I ${LIBFT_INC} -I ${GNL_INC} -I ${MLX_DIR} -c $< -o $@
 
 ${NAME}:		${OBJS}
 				make -C ${LIBFT_DIR}
