@@ -1,3 +1,4 @@
 *.a
 miniRT
 *.o
+.DS_Store
