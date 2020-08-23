@@ -6,7 +6,7 @@
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 00:35:24 by alopez-g          #+#    #+#             */
-/*   Updated: 2020/08/20 20:03:09 by dvagaymer        ###   ########.fr       */
+/*   Updated: 2020/08/23 18:12:19 by dvagaymer        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,16 @@
 #include <get_next_line.h>
 #include <ft_printf.h>
 #include <fcntl.h>
+#include "../includes/minirt.h"
 
-int	main(void)
+int	main(int argc, char **argv)
 {
-	char	*line;
-	int	fd;
-	char	*file_name = "scenes/default.rt";	
+	t_scene scene;
 
-	fd = open(file_name, O_RDONLY);
-	while (get_next_line(fd, &line))
-	{
-		ft_printf("%s\n", line);
-		free(line);
-	}
-	ft_printf("%s\n", line);
-	if (line)
-		free(line);
-	ft_printf("Size of var is: %d\n", sizeof(fd) * 8);
-	close(fd);
+	if (argc == 1)
+		return (0);
+	if (load_scene(*(argv + 1), &scene) == -1)
+		return (0);
+	printf("cy diameter: %f", ((t_cy *)scene.cys->content)->pos.z);
 	return (0);
 }

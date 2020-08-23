@@ -6,7 +6,7 @@
 #    By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/10 00:22:43 by alopez-g          #+#    #+#              #
-#    Updated: 2020/08/10 01:03:56 by alopez-g         ###   ########.fr        #
+#    Updated: 2020/08/23 17:08:46 by dvagaymer        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ FTPF_INC	=	${FTPF_DIR}includes/
 GNL_INC		=	${GNL_DIR}includes/
 
 SRCS_DIR	=	${MINIRT_DIR}
-SRCS		=	${SRCS_DIR}srcs/main.c
+SRCS		=	${SRCS_DIR}srcs/main.c ${SRCS_DIR}srcs/loadScene/load_scene.c ${SRCS_DIR}srcs/loadScene/load_polygons.c \
+			${SRCS_DIR}srcs/loadScene/load_setup_properties.c ${SRCS_DIR}srcs/loadScene/load_scene_utils.c
 OBJS		= 	$(patsubst %.c, %.o, ${SRCS})
 
 LIBFT_LIB	=	ft
@@ -36,7 +37,7 @@ MLX_DIR		=	${MINIRT_DIR}srcs/libs/minilibx_opengl_20191021
 FLAGS		=	-L${MLX_DIR} -lmlx -framework OpenGL -framework AppKit
 
 %.o : %.c
-				clang -Wall -Werror -Wextra -I ${FTPF_INC} -I ${LIBFT_INC} -I ${GNL_INC} -I ${MLX_DIR} -c $< -o $@
+				clang -I ${FTPF_INC} -I ${LIBFT_INC} -I ${GNL_INC} -I ${MLX_DIR} -c $< -o $@
 
 ${NAME}:		${OBJS}
 				make -C ${LIBFT_DIR}
