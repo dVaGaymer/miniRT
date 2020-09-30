@@ -32,7 +32,7 @@ NAME		=	miniRT
 
 CC			=	clang
 
-	#Check OS
+	# Check OS
 #IF MACOS
 #MLX_DIR	=	${MINIRT_DIR}srcs/libs/minilibx_opengl_20191021
 #FLAGS		=	-framework OpenGL -framework AppKit
