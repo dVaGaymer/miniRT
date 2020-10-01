@@ -44,7 +44,7 @@ ifeq ($(shell uname), "Darwin")
 MLX_DIR	=	${MINiIRT_DIR}srcs/libs/minilibx_opengl_20191021
 FLAGS		=	-framework OpenGL -framework AppKit
 else
-#IF NOT DARWIN (probably Linux)
+#IFNOT DARWIN (probably Linux)
 MLX_DIR		=	${MINIRT_DIR}srcs/libs/minilibx-linux
 FLAGS		=	-L/usr/lib -lXext -lX11 -lm -lz
 endif
