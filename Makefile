@@ -10,6 +10,12 @@
 #                                                                              #
 # **************************************************************************** #
 
+RED		=	\033[0;31m
+CYAN		=	\033[0;36m
+GREEN		=	\033[1;32m
+YELLOW		=	\033[1;33m
+NC		=	\033[0m
+
 LIBFT_INC	=	${LIBFT_DIR}includes/
 FTPF_INC	=	${FTPF_DIR}includes/
 GNL_INC		=	${GNL_DIR}includes/
@@ -32,43 +38,57 @@ NAME		=	miniRT
 
 CC			=	clang
 
-	# Check OS
+#Check OS
 #IF MACOS
-#MLX_DIR	=	${MINIRT_DIR}srcs/libs/minilibx_opengl_20191021
-#FLAGS		=	-framework OpenGL -framework AppKit
-#IF LINUX
+ifeq ($(shell uname), "Darwin")
+MLX_DIR	=	${MINiIRT_DIR}srcs/libs/minilibx_opengl_20191021
+FLAGS		=	-framework OpenGL -framework AppKit
+else
+#IF NOT DARWIN (probably Linux)
 MLX_DIR		=	${MINIRT_DIR}srcs/libs/minilibx-linux
 FLAGS		=	-L/usr/lib -lXext -lX11 -lm -lz
+endif
 
 %.o : %.c
-				clang -I ${FTPF_INC} -I ${LIBFT_INC} -I ${GNL_INC} -I ${MLX_DIR} -c $< -o $@
+				@clang -I ${FTPF_INC} -I ${LIBFT_INC} -I ${GNL_INC} -I ${MLX_DIR} -c $< -o $@
 
 ${NAME}:		${OBJS}
-				make -C ${LIBFT_DIR}
-				cp ${LIBFT_A} ./
+				@echo -n "${RED}Compiling LIBFT${NC}"
+				@make -s -C ${LIBFT_DIR}
+				@cp ${LIBFT_A} ./
+				@echo " ---> ${CYAN}Success${NC}"
 
-				make -C ${FTPF_DIR}
-				cp ${FTPF_A} ./
+				@echo -n "${RED}Compiling FTPF${NC}"
+				@make -s -C ${FTPF_DIR}
+				@cp ${FTPF_A} ./
+				@echo "  ---> ${CYAN}Success${NC}"
 
-				make -C ${GNL_DIR}
-				cp ${GNL_A} ./
+				@echo -n "${RED}Compiling GNL${NC}"
+				@make -s -C ${GNL_DIR}
+				@cp ${GNL_A} ./
+				@echo "   ---> ${CYAN}Success${NC}"
 
-				${CC} ${FLAGS} ${OBJS} -L${MLX_DIR} -lmlx -L${MINIRT_DIR} -l${GNL_LIB} -l${FTPF_LIB} -l${LIBFT_LIB} -o ${NAME}
+				@echo "\n${GREEN}${NAME} READY!${NC}"
+
+				@${CC} ${FLAGS} ${OBJS} -L${MLX_DIR} -lmlx -L${MINIRT_DIR} -l${GNL_LIB} -l${FTPF_LIB} -l${LIBFT_LIB} -o ${NAME}
 
 all:			${NAME}
 
 clean:
-				make -C ${LIBFT_DIR} clean
-				make -C ${FTPF_DIR} clean
-				make -C ${GNL_DIR} clean
-				rm -f ${OBJS}
+				@make -s -C ${LIBFT_DIR} clean
+				@make -s -C ${FTPF_DIR} clean
+				@make -s -C ${GNL_DIR} clean
+				@rm -f ${OBJS}
+				@echo "${YELLOW}OBJS Removed!${NC}"
 
 fclean:			clean
-				rm -f ${LIBFT_A}
-				rm -f ${FTPF_A}
-				rm -f ${GNL_A}
-				rm -f *.a
-				rm -f miniRT
+				@rm -f ${LIBFT_A}
+				@rm -f ${FTPF_A}
+				@rm -f ${GNL_A}
+				@rm -f *.a
+				@echo "${YELLOW}LIBS Removed!${NC}"
+				@rm -f miniRT
+				@echo "${YELLOW}miniRT exe Removed!${NC}"
 				
 re:				fclean all
 .PHONY:			all clean fclean re bonus
