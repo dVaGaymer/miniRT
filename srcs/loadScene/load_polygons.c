@@ -12,7 +12,7 @@
 
 #include "../../includes/minirt.h"
 
-int	read_plane(char *line, t_scene *sc)
+void	read_plane(char *line, t_scene *sc)
 {
 	t_pl	*content;
 	t_list	*lst;
@@ -24,10 +24,9 @@ int	read_plane(char *line, t_scene *sc)
 	content->color = read_color(&line);
 	lst->content = content;
 	ft_lstadd_back(&(sc->pls), lst);
-	return (0);
 }
 
-int	read_sphere(char *line, t_scene *sc)
+void	read_sphere(char *line, t_scene *sc)
 {
 	t_sp	*content;
 	t_list	*lst;
@@ -41,10 +40,9 @@ int	read_sphere(char *line, t_scene *sc)
 	content->color = read_color(&line);
 	lst->content = content;
 	ft_lstadd_back(&(sc->sps), lst);
-	return (0);
 }
 
-int	read_square(char *line, t_scene *sc)
+void	read_square(char *line, t_scene *sc)
 {
 	t_sq	*content;
 	t_list	*lst;
@@ -59,10 +57,9 @@ int	read_square(char *line, t_scene *sc)
 	content->color = read_color(&line);
 	lst->content = content;
 	ft_lstadd_back(&(sc->sqs), lst);
-	return (0);
 }
 
-int	read_cylinder(char *line, t_scene *sc)
+void	read_cylinder(char *line, t_scene *sc)
 {
 	t_cy	*content;
 	t_list	*lst;
@@ -80,10 +77,9 @@ int	read_cylinder(char *line, t_scene *sc)
 	content->color = read_color(&line);
 	lst->content = content;
 	ft_lstadd_back(&(sc->cys), lst);
-	return (0);
 }
 
-int	read_triangle(char *line, t_scene *sc)
+void	read_triangle(char *line, t_scene *sc)
 {
 	t_tr	*content;
 	t_list	*lst;
@@ -95,5 +91,4 @@ int	read_triangle(char *line, t_scene *sc)
 	content->p2 = read_vector(&line);	
 	lst->content = content;
 	ft_lstadd_back(&(sc->trs), lst);
-	return (0);
 }

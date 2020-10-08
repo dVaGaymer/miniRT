@@ -19,18 +19,16 @@ int	load_scene(const char *fileName, t_scene *scene)
 {
 	int	fd;
 	char	*line;
-	int	status;
 
-	status = 0;
 	fd = open(fileName, O_RDONLY);
 	ft_bzero(scene, sizeof(t_scene));
-	while (get_next_line(fd, &line) && !status)
+	while (get_next_line(fd, &line))
 	{
-		status = parse_line(line, scene);
+		parse_line(line, scene);
 		free(line);
 	}
 	close(fd);
-	return (status);
+	return (0);
 }
 
 /**
@@ -38,29 +36,28 @@ int	load_scene(const char *fileName, t_scene *scene)
  * 		0 if useless line
  * 		1 if valid line
 **/
-int	parse_line(char *line, t_scene *scene)
+void	parse_line(char *line, t_scene *scene)
 {
 	while (ft_isspace(*line))
 		line++;
 	if (*line == '#' || *line == 0)
-		return (0);
+		return ;
 	else if (*line == 'R' && *(line + 1) == 32)
-		return (read_resolution(line + 1, scene));
+		read_resolution(line + 1, scene);
 	else if (*line == 'A' && *(line + 1) == 32)
-		return (read_alight(line + 1, scene));
+		read_alight(line + 1, scene);
 	else if (*line == 'c' && *(line + 1) == 32)
-		return (read_camera(line + 1, scene));
+		read_camera(line + 1, scene);
 	else if (*line == 'l' && *(line + 1) == 32)
-		return (read_light(line + 1, scene));
+		read_light(line + 1, scene);
 	else if (*line == 'p' && *(line + 1) == 'l')
-		return (read_plane(line + 2, scene));
+		read_plane(line + 2, scene);
 	else if (*line == 's' && *(line + 1)	== 'p')
-		return (read_sphere(line + 2, scene));
+		read_sphere(line + 2, scene);
 	else if (*line == 's' && *(line + 1) == 'q')
-		return (read_square(line + 2, scene));
+		read_square(line + 2, scene);
 	else if (*line == 'c' && *(line + 1) == 'y')
-		return (read_cylinder(line + 2, scene));
+		read_cylinder(line + 2, scene);
 	else if (*line == 't' && *(line + 1) == 'r')
-		return (read_triangle(line + 2, scene));
-	return (-1);
+		read_triangle(line + 2, scene);
 }

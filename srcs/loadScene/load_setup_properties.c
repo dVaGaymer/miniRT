@@ -13,25 +13,23 @@
 #include "../../includes/minirt.h"
 #include <libft.h>
 
-int	read_resolution(char *line, t_scene *sc)
+void	read_resolution(char *line, t_scene *sc)
 {
 	sc->w = ft_atoi(line);
 	while (ft_isspace(*line++));
 	line = ft_strchr(line, ' ') + 1;
 	sc->h = ft_atoi(line);
-	return (0);
 }
 
-int	read_alight(char *line, t_scene *sc)
+void	read_alight(char *line, t_scene *sc)
 {
 	(sc->ambient).brightness = ft_atof(line);
 	while (ft_isspace(*line++));
 	line = ft_strchr(line, ' ') + 1;
 	(sc->ambient).color = read_color(&line);
-	return (0);
 }
 
-int	read_camera(char *line, t_scene *sc)
+void	read_camera(char *line, t_scene *sc)
 {
 	t_cam	*content;
 	t_list	*lst;
@@ -43,10 +41,9 @@ int	read_camera(char *line, t_scene *sc)
 	content->fov = ft_atoi(line);
 	lst->content = content;
 	ft_lstadd_back(&(sc->cameras), lst);
-	return (0);
 }
 
-int	read_light(char *line, t_scene *sc)
+void	read_light(char *line, t_scene *sc)
 {
 	t_light	*content;
 	t_list	*lst;
@@ -60,5 +57,4 @@ int	read_light(char *line, t_scene *sc)
 	content->color = read_color(&line);	
 	lst->content = content;
 	ft_lstadd_back(&(sc->lights), lst);
-	return (0);
 }
