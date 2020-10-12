@@ -19,7 +19,7 @@ void	read_plane(char *line, t_scene *sc)
 
 	lst = (t_list *)malloc(sizeof(t_list));
 	content = (t_pl *)malloc(sizeof(t_pl));
-	content->pos = read_vector(&line);	
+	content->pos = read_vector(&line);
 	content->norm = read_vector(&line);
 	content->color = read_color(&line);
 	lst->content = content;

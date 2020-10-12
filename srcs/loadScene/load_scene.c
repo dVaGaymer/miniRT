@@ -27,6 +27,8 @@ int	load_scene(const char *fileName, t_scene *scene)
 		parse_line(line, scene);
 		free(line);
 	}
+	if (line)
+		free(line);
 	close(fd);
 	return (0);
 }
