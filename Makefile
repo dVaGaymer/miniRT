@@ -22,7 +22,7 @@ GNL_INC		=	${GNL_DIR}includes/
 
 SRCS_DIR	=	${MINIRT_DIR}
 SRCS		=	${SRCS_DIR}srcs/main.c ${SRCS_DIR}srcs/loadScene/load_scene.c ${SRCS_DIR}srcs/loadScene/load_polygons.c \
-			${SRCS_DIR}srcs/loadScene/load_setup_properties.c ${SRCS_DIR}srcs/loadScene/load_scene_utils.c
+			${SRCS_DIR}srcs/loadScene/load_setup_properties.c ${SRCS_DIR}srcs/loadScene/load_scene_utils.c ${SRCS_DIR}srcs/log/log_polygons.c
 OBJS		= 	$(patsubst %.c, %.o, ${SRCS})
 
 LIBFT_LIB	=	ft
@@ -71,6 +71,8 @@ ${NAME}:		${OBJS}
 				@echo "\n${GREEN}${NAME} READY!${NC}"
 
 				@${CC} ${FLAGS} ${OBJS} -L${MLX_DIR} -lmlx -L${MINIRT_DIR} -l${GNL_LIB} -l${FTPF_LIB} -l${LIBFT_LIB} -o ${NAME}
+				#make without mlx
+				#@${CC} ${OBJS} -L${MINIRT_DIR} -l${GNL_LIB} -l${FTPF_LIB} -l${LIBFT_LIB} -o ${NAME}
 
 all:			${NAME}
 

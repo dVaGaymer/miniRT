@@ -96,3 +96,10 @@ void	read_cylinder(char *line, t_scene *sc);
 void	read_triangle(char *line, t_scene *sc);
 t_vec3	read_vector(char **line);
 int		read_color(char **line);
+
+//log
+void	log_plane(void *pl);
+void	log_sphere(void *sp);
+void	log_square(void *sq);
+void	log_cylinder(void *cy);
+void	log_triangle(void *tr);
