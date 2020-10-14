@@ -68,11 +68,10 @@ ${NAME}:		${OBJS}
 				@cp ${GNL_A} ./
 				@echo "   ---> ${CYAN}Success${NC}"
 
-				@echo "\n${GREEN}${NAME} READY!${NC}"
-
 				@${CC} ${FLAGS} ${OBJS} -L${MLX_DIR} -lmlx -L${MINIRT_DIR} -l${GNL_LIB} -l${FTPF_LIB} -l${LIBFT_LIB} -o ${NAME}
 				#make without mlx
 				#@${CC} ${OBJS} -L${MINIRT_DIR} -l${GNL_LIB} -l${FTPF_LIB} -l${LIBFT_LIB} -o ${NAME}
+				@echo "\n${GREEN}${NAME} READY!${NC}"
 
 all:			${NAME}
 
