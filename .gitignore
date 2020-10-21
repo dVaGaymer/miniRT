@@ -2,4 +2,8 @@
 miniRT
 *.o
 .DS_Store
-testing/
+
+#Testing folder
+testing/main.c
+testing/Makefile
+testing/config.sh
