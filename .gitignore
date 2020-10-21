@@ -2,4 +2,4 @@
 miniRT
 *.o
 .DS_Store
-testing/*
+testing/
