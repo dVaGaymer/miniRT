@@ -34,7 +34,7 @@ GNL_A		=	${GNL_DIR}lib${GNL_LIB}.a
 FTPF_LIB	=	ftprintf
 FTPF_A		=	${FTPF_DIR}lib${FTPF_LIB}.a
 
-NAME		=	miniRT_TEST
+NAME		=	miniRT
 
 CC			=	clang
 

@@ -44,7 +44,8 @@ struct s_triangle
 
 struct s_ray
 {
-	
+	vec3 A;
+	vec3 B;	
 };
 
 void fill_pixel(struct s_canvas_info canvas_info, int x, int y, int color)
