@@ -21,7 +21,8 @@ FTPF_INC	=	${FTPF_DIR}includes/
 GNL_INC		=	${GNL_DIR}includes/
 
 SRCS_DIR	=	${MINIRT_DIR}
-SRCS		=	main.c ${SRCS_DIR}srcs/loadScene/load_scene.c ${SRCS_DIR}srcs/loadScene/load_polygons.c \
+SRCS		=	main.c main_image.c rt_math.c \
+				${SRCS_DIR}srcs/loadScene/load_scene.c ${SRCS_DIR}srcs/loadScene/load_polygons.c \
 				${SRCS_DIR}srcs/loadScene/load_setup_properties.c ${SRCS_DIR}srcs/loadScene/load_scene_utils.c ${SRCS_DIR}srcs/log/log_polygons.c
 OBJS		= 	$(patsubst %.c, %.o, ${SRCS})
 

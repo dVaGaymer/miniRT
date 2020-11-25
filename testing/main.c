@@ -28,26 +28,6 @@ void close_window(int keycode, void *params)
 	}
 }
 
-struct s_vec3
-{
-	float x;
-	float y;
-	float z;
-};
-
-struct s_triangle
-{
-	struct s_vec3 p0;
-	struct s_vec3 p1;
-	struct s_vec3 p2;
-};
-
-struct s_ray
-{
-	struct s_vec3 a;
-	struct s_vec3 b;	
-};
-
 void fill_pixel(struct s_canvas_info canvas_info, int x, int y, int color)
 {
 	char *dst;
@@ -55,16 +35,11 @@ void fill_pixel(struct s_canvas_info canvas_info, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-int rgba_to_int(int r, int g, int b, int a)
-{
-	return a << 24 | r << 16 | g << 8 | b;
-}
-
+struct s_win_info win_info;
+struct s_canvas_info canvas_info;
+int main_image(int x, int y, int width, int height);
 int     main(void)
 {
-	struct s_win_info win_info;
-	struct s_canvas_info canvas_info;
-
 	//Setup
 	canvas_info.width = 800;
 	canvas_info.height = 600;
@@ -79,16 +54,12 @@ int     main(void)
 	mlx_key_hook(win_info.mlx_win, close_window, (void *)&win_info);
 
 	//Draw on canvas
-	int color, r, g, b;
+	int color;
 	for (int y = 0; y < canvas_info.height; y++)
 	{
 		for (int x = 0; x < canvas_info.width; x++)
-		{
-			r = (255 * (1 - (float)y / (float)canvas_info.height));
-			g = (255 * ((float)y / (float)canvas_info.height));
-			b =	(255 * ((float)x / (float)canvas_info.width));
-			
-			color = rgba_to_int(r, g, b, 0);
+		{	
+			color = main_image(x, y, canvas_info.width, canvas_info.height);
 			fill_pixel(canvas_info, x, y, mlx_get_color_value(win_info.mlx_ptr, color));
 		}
 	}
@@ -98,4 +69,4 @@ int     main(void)
 	mlx_put_image_to_window(win_info.mlx_ptr, win_info.mlx_win, canvas_info.canvas, 0, 0);
 
     mlx_loop(win_info.mlx_ptr);
-}    
+}
