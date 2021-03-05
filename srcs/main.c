@@ -14,6 +14,7 @@
 #include <get_next_line.h>
 #include <ft_printf.h>
 #include <fcntl.h>
+#include <mlx.h>
 #include "../includes/minirt.h"
 
 static void free_scene(t_scene *scene);
@@ -22,23 +23,31 @@ void		log_scene_info(t_scene scene);
 int	main(int argc, char **argv)
 {
 	t_scene scene;
+	t_win_info win_info;
+	t_canvas_info canvas_info;
 
 	if (argc == 1)
 		return (0);
-	if (load_scene(*(argv + 1), &scene) == -1)
-		ft_printf("Loaded!");
+	if (load_scene(*(argv + 1), &scene) != 0)
+		ft_printf("Error! - EXIT");
 	log_scene_info(scene);
+
+	//Setup
+	mlx_setup(&win_info, &canvas_info);
+	//Draw
+	display(&win_info, &canvas_info, scene);
+
+    mlx_loop(win_info.mlx_ptr);
 	free_scene(&scene);
-	ft_printf("Memory freed!\n");
 	return (0);
 }
 
 void		log_scene_info(t_scene scene)
 {
-	//ft_printf("\nCameras:\n");
-	//ft_lstiter(scene.cameras, &log_camera);
-	//ft_printf("\nLights:\n");
-	//ft_lstiter(scene.lights, &log_light);
+	ft_printf("\nCameras:\n");
+	ft_lstiter(scene.cameras, &log_camera);
+	ft_printf("\nLights:\n");
+	ft_lstiter(scene.lights, &log_light);
 	ft_printf("\nPlanes:\n");
 	ft_lstiter(scene.pls, &log_plane);
 	ft_printf("\nSpheres:\n");
@@ -60,4 +69,5 @@ static void free_scene(t_scene *scene)
 	ft_lstclear(&scene->sqs, free);
 	ft_lstclear(&scene->cys, free);
 	ft_lstclear(&scene->trs, free);
+	ft_printf("Memory freed!\n");
 }

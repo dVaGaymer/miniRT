@@ -125,7 +125,6 @@ do
         fi
     done
     echo l"\t"$VAR_0"\t"$VAR_1"\t"$VAR_2 >> $SCENE_NAME.rt
-    echo NUM
 done
 
 #pl

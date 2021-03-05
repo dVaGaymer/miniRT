@@ -6,8 +6,7 @@ typedef	struct	s_win_info
 	void 	*mlx_ptr;
 	void	*mlx_win;
 }				t_win_info;
-
-struct s_canvas_info
+typedef	struct	s_canvas_info
 {
 	void	*canvas;
 	char	*addr;
@@ -16,7 +15,7 @@ struct s_canvas_info
 	int 	bpp;
 	int		size_line;
 	int		endian;
-};
+}				t_canvas_info;
 
 void close_window(int keycode, void *params)
 {
@@ -28,15 +27,15 @@ void close_window(int keycode, void *params)
 	}
 }
 
-void fill_pixel(struct s_canvas_info canvas_info, int x, int y, int color)
+void fill_pixel(t_canvas_info canvas_info, int x, int y, int color)
 {
 	char *dst;
 	dst = canvas_info.addr + canvas_info.size_line * y + x * (canvas_info.bpp / 8);
 	*(unsigned int *)dst = color;
 }
 
-struct s_win_info win_info;
-struct s_canvas_info canvas_info;
+t_win_info win_info;
+t_canvas_info canvas_info;
 int main_image(int x, int y, int width, int height);
 int     main(void)
 {
@@ -44,7 +43,7 @@ int     main(void)
 	canvas_info.width = 800;
 	canvas_info.height = 600;
     win_info.mlx_ptr = mlx_init();
-    win_info.mlx_win = mlx_new_window(win_info.mlx_ptr, canvas_info.width, canvas_info.height, "Hello world!");
+    win_info.mlx_win = mlx_new_window(win_info.mlx_ptr, canvas_info.width, canvas_info.height, "MiniRT");
 
 
 	canvas_info.canvas = mlx_new_image(win_info.mlx_ptr, canvas_info.width, canvas_info.height);

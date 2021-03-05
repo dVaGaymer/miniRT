@@ -10,14 +10,36 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#ifndef MINIRT_H
+#define MINIRT_H
 
-typedef	struct	s_vec3
+#include <libft.h>
+#include "rtmath.h"
+
+typedef	struct	s_win_info
 {
-	float	x;
-	float	y;
-	float	z;
-}		t_vec3;
+	void 	*mlx_ptr;
+	void	*mlx_win;
+}				t_win_info;
+typedef	struct	s_canvas_info
+{
+	void	*canvas;
+	char	*addr;
+	int		width;
+	int		height;
+	int 	bpp;
+	int		size_line;
+	int		endian;
+}				t_canvas_info;
+
+typedef	enum	e_type
+{
+	PLANE,
+	SPHERE,
+	SQUARE,
+	CYLINDER,
+	TRIANGLE
+}				t_type;
 typedef	struct	s_a
 {
 	float	brightness;
@@ -69,6 +91,14 @@ typedef	struct	s_tr
 	t_vec3	p2;
 	int	color;
 }		t_tr;
+typedef	struct	s_fragment
+{
+	t_type	type;
+	t_vec3	color;
+	t_vec3	pos;
+	t_vec3	normal;
+	t_vec3	material;
+}				t_fragment;
 typedef	struct	s_scene
 {
 	int	w;
@@ -103,3 +133,15 @@ void	log_sphere(void *sp);
 void	log_square(void *sq);
 void	log_cylinder(void *cy);
 void	log_triangle(void *tr);
+
+void	log_resolution(t_scene *scene);
+void	log_alight(void *sp);
+void	log_camera(void *sq);
+void	log_light(void *cy);
+
+int		shade(int x, int y, int width, int height, t_scene scene);
+void	display(t_win_info *win_info, t_canvas_info *canvas_info, t_scene scene);
+void	mlx_setup(t_win_info *win_info, t_canvas_info *canvas_info);
+void	fill_pixel(t_canvas_info *canvas_info, int x, int y, int color);
+void	close_window(int keycode, void *params);
+#endif

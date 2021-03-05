@@ -1,0 +1,17 @@
+#-----Ambient-----
+#   width           height
+R   1920            1080
+
+#   brightness      color
+A   0.2             255,255,255
+
+#   POV             orientation         FOV
+c   -50,0,20        0,0,0               70
+
+#   position        brightness          color
+l   -40,0,30        0.7                 255,255,255
+
+
+#-----3D OBJECTS-----
+#   center          diameter            color
+sp  0,0,20          1                  255,0,0

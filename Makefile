@@ -22,7 +22,8 @@ GNL_INC		=	${GNL_DIR}includes/
 
 SRCS_DIR	=	${MINIRT_DIR}
 SRCS		=	${SRCS_DIR}srcs/main.c ${SRCS_DIR}srcs/loadScene/load_scene.c ${SRCS_DIR}srcs/loadScene/load_polygons.c \
-			${SRCS_DIR}srcs/loadScene/load_setup_properties.c ${SRCS_DIR}srcs/loadScene/load_scene_utils.c ${SRCS_DIR}srcs/log/log_polygons.c
+			${SRCS_DIR}srcs/loadScene/load_setup_properties.c ${SRCS_DIR}srcs/loadScene/load_scene_utils.c ${SRCS_DIR}srcs/log/log_polygons.c \
+			${SRCS_DIR}srcs/log/log_setup_properties.c ${SRCS_DIR}srcs/render/render.c  ${SRCS_DIR}srcs/interface_setup.c ${SRCS_DIR}srcs/math/color_conversion.c
 OBJS		= 	$(patsubst %.c, %.o, ${SRCS})
 
 LIBFT_LIB	=	ft
